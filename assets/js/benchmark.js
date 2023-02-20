@@ -79,13 +79,13 @@ const questions = [
   let score = 0;
 
   function showQuestion() {
-    const currentQuestion = questions[currentQuestion]; // Ottieni la domanda corrente dal array questions
-    questionTitle.innerText = currentQuestion.question; // Mostra il testo della domanda corrente
+    const currentQ = questions[currentQuestion]; // Ottieni la domanda corrente dall'array questions
+    questionTitle.innerText = currentQ.question; // Mostra il testo della domanda corrente
     // questionExplanation.innerText = ""; // Resetta il testo di spiegazione
     questionAnswer.innerHTML = ""; // Resetta le risposte precedenti
   
     // Crea un pulsante per ogni risposta e aggiungilo alla pagina
-    currentQuestion.incorrect_answers.forEach((answer) => {
+    currentQ.incorrect_answers.forEach((answer) => {
       const answerBtn = document.createElement("button");
       answerBtn.innerText = answer;
       answerBtn.addEventListener("click", handleWrongAnswer);
@@ -94,7 +94,7 @@ const questions = [
   
     // Crea il pulsante per la risposta corretta e aggiungilo alla pagina
     const correctAnswerBtn = document.createElement("button");
-    correctAnswerBtn.innerText = currentQuestion.correct_answer;
+    correctAnswerBtn.innerText = currentQ.correct_answer;
     correctAnswerBtn.addEventListener("click", handleCorrectAnswer);
     questionAnswer.appendChild(correctAnswerBtn);
     questionNumber.innerText = currentQuestion + 1;
