@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
+html, body {
+    display: block;
+    margin: 0 auto;
+    padding: 0;
+    border: 0;
+    background-image: url(../img/bg.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white;
+}
+
+header {
+    width: 85%;
+	margin: 20px auto;
+}
+
+header .logo {
+    width: 12%;
+}
+
+.container {
+	display: flex;
+    height: 100vh;
+	width: 85%;
+	margin: 0 auto;
+    flex-direction: column;
+	justify-content: center;
+	align-items: center;
+    font-family: 'Inter', 'Outfit', sans-serif;
+    text-align: center;
+}
+
+.container h1, .container h2, .container h3, .container h4 {
+    font-family:  'Outfit', sans-serif;
+    font-weight: 600;
+    white-space: pre-wrap;
+    font-weight: bold;
+}
+
+.container h1 {
+    font-size: 60px;
+}
+
+.container h2 {
+    font-size: 48px;
+}
+
+.container h3 {
+    font-size: 36px;
+    color: #D20094;
+    font-weight: 700;
+}
+
+.container h4 {
+    font-size: 30px;
+}
+
+.stars img {
+    filter: grayscale(100);
+    cursor: pointer;
+}
+.stars img.active {
+    filter: none;
+}
