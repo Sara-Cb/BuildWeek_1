@@ -79,7 +79,7 @@ const questions = [
   let score = 0;
 
   function showQuestion() {
-    const currentQuestion = questions[currentQuestion]; // Ottieni la domanda corrente dal array questions
+    const currentQuestion = questions[currentQuestion]; // Ottieni la domanda corrente dall'array questions
     questionTitle.innerText = currentQuestion.question; // Mostra il testo della domanda corrente
     // questionExplanation.innerText = ""; // Resetta il testo di spiegazione
     questionAnswer.innerHTML = ""; // Resetta le risposte precedenti
