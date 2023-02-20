@@ -58,11 +58,6 @@ header .logo {
     font-size: 30px;
 }
 
-
-h1{
-
-}
-
 .stars img {
     filter: grayscale(100);
     cursor: pointer;
