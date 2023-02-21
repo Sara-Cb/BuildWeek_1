@@ -30,7 +30,6 @@ header .logo {
 	justify-content: center;
 	align-items: center;
     font-family: 'Inter', 'Outfit', sans-serif;
-    text-align: center;
 }
 
 .container h1, .container h2, .container h3, .container h4 {
