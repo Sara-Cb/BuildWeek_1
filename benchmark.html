@@ -1,32 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Benchmark Epicode</title>
-    <link rel="stylesheet" href="assets/css/normalize.css">
-    <link rel="stylesheet" href="assets/css/style.css">
-</head>
+    <link rel="stylesheet" href="assets/css/normalize.css" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
 
-
-<body style="background-color: powderblue;">  <!--Per vedere il logo-->
+  <body style="background-color: powderblue">
+    <!--Per vedere il logo-->
 
     <header class="header" id="header_benchmark">
-        <img src="/assets/img/epicode_logo.png" alt="Logo Epicode" class="logo"> 
-        <div id="timer"></div>
+      <img src="/assets/img/epicode_logo.png" alt="Logo Epicode" class="logo" />
+      <div id="timer"></div>
     </header>
 
     <main>
-        <div class="container" id="container_benchmark">
-            <h2 id="question"></h2>
-            <div id="answers"></div>
-        </div>
+      <div class="container" id="container_benchmark">
+        <h2 id="question"></h2>
+        <fieldset id="answers"></fieldset>
+        <br><br>
         <button id="nxtBtn"></button>
+      </div>
+    </main>
 
-  </main>
-    <footer class="footer" id="footer_benchmark">
-        <p>Question <span id="question-number"></span> of <span id="total-questions"></span></p>
-    </footer>
+    <div>
+      <p>Question <span id="question-number"></span> of 10</p>
+    </div>
+
     <script src="assets/js/benchmark.js"></script>
-</body>
+  </body>
 </html>
