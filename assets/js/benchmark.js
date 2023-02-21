@@ -1,8 +1,3 @@
-export var yourResult = {
-  correctAnswers: score,
-  wrongAnswers: 10-score
-}
-
 const questions = [
     {
       question: "What does CPU stand for?",
@@ -198,7 +193,7 @@ const questions = [
       answerBtn.addEventListener("click", handleWrongAnswer);
       questionAnswer.appendChild(answerBtn);
     });
-  
+   
     // Crea il pulsante per la risposta corretta e aggiungilo alla pagina
     const correctAnswerBtn = document.createElement("button");
     correctAnswerBtn.innerText = currentQ.correct_answer;
@@ -223,7 +218,7 @@ const questions = [
   function showNextQuestion() {
     currentQuestion++; // Incrementa l'indice della domanda corrente
     if (currentQuestion >= res.length) {
-      console.log(score);
+      localStorage.setItem('score', score);
       window.location.href = '../../../result.html'
     } else {
       showQuestion(); // Altrimenti mostra la prossima domanda

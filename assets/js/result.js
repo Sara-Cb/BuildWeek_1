@@ -1,9 +1,10 @@
-import { yourResult } from "./modules/benchmark";
+var correctA = 0;
+var wrongA = 0;
 
-console.log(yourResult.correctAnswers + ' e ' + yourResult.wrongAnswers);
-
-var correctA = yourResult.correctAnswers;
-var wrongA = yourResult.wrongAnswers;
+if (localStorage.getItem('score')){
+  correctA = localStorage.getItem('score');
+  wrongA = 10-correctA;
+}
 
 const Grafico = document.getElementById('grafico');
 
@@ -16,7 +17,7 @@ const Grafico = document.getElementById('grafico');
         borderWidth: 1,
         data: [correctA, wrongA],
       backgroundColor: [
-        '#00fff',
+        '#00ffff',
         '#d20094',
       ],
       hoverOffset: 4
