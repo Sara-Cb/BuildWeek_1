@@ -117,7 +117,7 @@ const questions = [
     currentQuestion++; // Incrementa l'indice della domanda corrente
     if (currentQuestion >= questions.length) {
       // Se tutte le domande sono state fatte, reindirizza alla nuova pagina
-      console.log('Bravo!');
+      console.log(score);
     } else {
       showQuestion(); // Altrimenti mostra la prossima domanda
     }
