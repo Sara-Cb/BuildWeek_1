@@ -1,24 +1,23 @@
-const divGrafico = document.getElementById('grafico');
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-const grafico = {
-type: 'doughnut',
-data: data,
-};
-
-const data = {
-    labels: [
-      'Correct',
-      'Wrong',
-    ],
+new Chart(ctx, {
+  type: 'doughnut',
+  data: {
+    labels: ['Blue', 'Orange'],
     datasets: [{
-      label: 'Your result',
-      data: [300, 150],
-      backgroundColor: [
-        '#00fff',
-        '#d20094',
-      ],
-      hoverOffset: 4
+      label: '# of Votes',
+      data: [12, 19],
+      borderWidth: 1,
+      backgroundColor:[
+        'rgb(0,0,255)', 'orange'
+      ]
     }]
-  };
-
-  divGrafico.innerHTML += grafico;
+  },
+  options: {
+    scales: {
+      y: {
+        beginAtZero: true
+      }
+    }
+  }
+});
