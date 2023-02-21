@@ -15,6 +15,7 @@ const Grafico = document.getElementById('grafico');
       datasets: [{
         label: 'Your result',
         borderWidth: 1,
+        cutout: 100,
         data: [correctA, wrongA],
       backgroundColor: [
         '#00ffff',
