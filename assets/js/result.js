@@ -40,8 +40,8 @@ function result() {
       labels: ['Correct', 'Wrong'],
       datasets: [{
         label: 'Your result',
-        borderWidth: 0,
-        cutout: 90,
+        borderWidth: 1,
+        cutout: 100,
         data: [correctA, wrongA],
       backgroundColor: [
         '#00ffff',
