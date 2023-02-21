@@ -1,3 +1,8 @@
+export var yourResult = {
+  correctAnswers: score,
+  wrongAnswers: 10-score
+}
+
 const questions = [
     {
       question: "What does CPU stand for?",
@@ -160,7 +165,7 @@ const questions = [
   var res = [];
 
   const chooseRandom = (questions, num) => {
-    for (let i = 0; i < num ; ) {
+    for (let i = 0; i < num+1; ) {
       const random = Math.floor(Math.random() * questions.length);
       if(res.indexOf(questions[random]) !== -1) {
         continue;
@@ -173,19 +178,17 @@ const questions = [
   chooseRandom(questions, 10);
 
   const questionTitle = document.getElementById("question"); // Titolo domanda
-  // const questionExplanation = document.getElementById("questionExplanation"); //Sottotitolo domanda
   const questionAnswer = document.getElementById("answers"); // Risposta
   const nxtBtn = document.getElementById("nxtBtn"); // Bottone prossima domanda
   const questionNumber = document.getElementById("question-number"); // Numero domanda attuale
   const questionTotal = document.getElementById("total-questions"); // Numero domande totali -- RIGA 82
 
-  let currentQuestion = 0;
-  let score = 0;
+  var currentQuestion = 0;
+  var score = 0;
 
   function showQuestion() {
     const currentQ = res[currentQuestion]; // Ottieni la domanda corrente dall'array questions
     questionTitle.innerText = currentQ.question; // Mostra il testo della domanda corrente
-    // questionExplanation.innerText = ""; // Resetta il testo di spiegazione
     questionAnswer.innerHTML = ""; // Resetta le risposte precedenti
   
     // Crea un pulsante per ogni risposta e aggiungilo alla pagina
@@ -220,15 +223,15 @@ const questions = [
   function showNextQuestion() {
     currentQuestion++; // Incrementa l'indice della domanda corrente
     if (currentQuestion >= res.length) {
-      // Se tutte le domande sono state fatte, reindirizza alla nuova pagina
       console.log(score);
+      window.location.href = '../../../result.html'
     } else {
       showQuestion(); // Altrimenti mostra la prossima domanda
     }
   }
   
   // Aggiungi l'evento "click" al pulsante "nxtBtn"
-  nxtBtn.addEventListener("click", showNextQuestion);
+  nxtBtn.addEventListener("click", showNextQuestion());
   
   // Inizia mostrando la prima domanda
   showQuestion();
