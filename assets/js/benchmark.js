@@ -156,6 +156,7 @@ const timerCircle = document.querySelector('svg > circle + circle');
 let currentQuestion = 0; 
 let score = 0;
 let timeLeft = 30;
+let timerInterval = null;
 
 
 //estrazione domande
@@ -273,11 +274,12 @@ function runTimer() {
   timeLeft = 30;
 	timerCircle.classList.add('animatable');
 	timerCircle.style.strokeDashoffset = 1;
-  clearInterval();
+  let timeRemaining = 0;
+
+  clearInterval(timerInterval);
   
-  setInterval ( function(){
+  timerInterval = setInterval ( function(){
 		if(isTimeLeft()){
-      let timeRemaining = 0;
 			timeRemaining = timeLeft-- ;
 			const normalizedTime = (timeRemaining - 30 ) / 30;
    // const normalizedTime = (30 - timeRemaining) / 30; ---> Senso antiorario
@@ -294,6 +296,7 @@ function runTimer() {
 
   
 function diNuovo() {
+  timerInterval = null;
   timeLeft = 30; // reset del timer ad ogni nuova domanda
   runTimer(); // avvia il timer per la nuova domanda
 }
