@@ -6,7 +6,6 @@ if (localStorage.getItem('score')) {
   wrongA = 10 - correctA;
 }
 
-
 const correctPercentage = (correctA / 10) * 100;
 const wrongPercentage = (wrongA / 10) * 100;
 
