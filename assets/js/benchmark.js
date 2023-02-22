@@ -150,12 +150,14 @@ const questionAnswer = document.getElementById("answers"); // Risposta
 const nxtBtn = document.getElementById("nxtBtn"); // Bottone prossima domanda
 const questionNumber = document.getElementById("question-number"); // Numero domanda attuale
 const questionTotal = document.getElementById("total-questions"); // Numero domande totali
+const timer = document.getElementById('timeLeft');
+const timerCircle = document.querySelector('svg > circle + circle');
 
-var currentQuestion = 0; 
-var score = 0;
+let currentQuestion = 0; 
+let score = 0;
+let timeLeft = 30;
+let timerInterval = null;
 
-// Aggiungi l'evento "click" al pulsante "nxtBtn"
-nxtBtn.addEventListener("click", showNextQuestion);
 
 //estrazione domande
 const chooseRandom = (questions) => {
@@ -169,6 +171,7 @@ const chooseRandom = (questions) => {
   }
   return res;
 };
+
 const res = chooseRandom(questions);
 const currentQ = res[currentQuestion]; // Ottieni la domanda corrente dall'array questions
 questionTitle.innerText = currentQ.question; // Mostra il testo della domanda corrente
@@ -235,15 +238,14 @@ function showNextQuestion() {
     });
     questionNumber.innerText = currentQuestion + 1;
     setNextBtnText();
-    diNuovo(); // elimina il timer precedente
+    stopTimer(); // elimina il timer precedente
+    runTimer()
     console.log(score);
   }
 }
 
-function diNuovo() {
-  timeLeft = 30; // reset del timer ad ogni nuova domanda
-  runTimer(); // avvia il timer per la nuova domanda
-}
+// Aggiungi l'evento "click" al pulsante "nxtBtn"
+nxtBtn.addEventListener("click", showNextQuestion);
 
 //cambio testo del button durante l'ultima domanda
 function setNextBtnText() {
@@ -264,20 +266,16 @@ window.addEventListener("load", function () {
 /*//////////////////////////////////////////*/
 // JS per timer
 
-let timeLeft = 30;
-let timer = document.getElementById('timeLeft');
-
 function isTimeLeft() {
   return timeLeft > -1;
 }
 
 // Funzione per eseguire il timre
 function runTimer() {
-  timeLeft = 30;
-	const timerCircle = document.querySelector('svg > circle + circle');
 	timerCircle.classList.add('animatable');
 	timerCircle.style.strokeDashoffset = 1;
-  setInterval ( function(){
+
+  timerInterval = setInterval ( function(){
 		if(isTimeLeft()){
       let timeRemaining = 0;
 			timeRemaining = timeLeft-- ;
@@ -294,3 +292,9 @@ function runTimer() {
   , 1000)
   ;}
 
+  
+function stopTimer() {
+  timerInterval = null;
+  timeLeft = 30; // reset del timer ad ogni nuova domanda
+  clearInterval(timerInterval);
+}
