@@ -213,7 +213,7 @@ function showNextQuestion() {
   currentQuestion++;
   if (currentQuestion >= res.length) {
     localStorage.setItem("score", score);
-    window.location.href = "../../../result.html";
+    window.location.href = "../../result.html";
   } else {
     showQuestion();
   }
