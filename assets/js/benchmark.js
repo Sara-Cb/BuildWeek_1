@@ -238,7 +238,8 @@ function showNextQuestion() {
     });
     questionNumber.innerText = currentQuestion + 1;
     setNextBtnText();
-    diNuovo(); // elimina il timer precedente
+    stopTimer(); // elimina il timer precedente
+    runTimer()
     console.log(score);
   }
 }
@@ -271,15 +272,12 @@ function isTimeLeft() {
 
 // Funzione per eseguire il timre
 function runTimer() {
-  timeLeft = 30;
 	timerCircle.classList.add('animatable');
 	timerCircle.style.strokeDashoffset = 1;
-  let timeRemaining = 0;
 
-  clearInterval(timerInterval);
-  
   timerInterval = setInterval ( function(){
 		if(isTimeLeft()){
+      let timeRemaining = 0;
 			timeRemaining = timeLeft-- ;
 			const normalizedTime = (timeRemaining - 30 ) / 30;
    // const normalizedTime = (30 - timeRemaining) / 30; ---> Senso antiorario
@@ -295,8 +293,8 @@ function runTimer() {
   ;}
 
   
-function diNuovo() {
+function stopTimer() {
   timerInterval = null;
   timeLeft = 30; // reset del timer ad ogni nuova domanda
-  runTimer(); // avvia il timer per la nuova domanda
+  clearInterval(timerInterval);
 }
