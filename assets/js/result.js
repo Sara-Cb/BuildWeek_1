@@ -6,7 +6,6 @@ if (localStorage.getItem('score')){
   wrongA = 10-correctA;
 }
 
-
 const correctPercentage = (correctA / 10) * 100;
 const wrongPercentage = (wrongA / 10) * 100;
 
@@ -50,6 +49,17 @@ function result() {
       hoverOffset: 4
       }]
     },
+    options: {
+      elements: {
+        center: {
+          text: 'Red is 2/3 the total numbers',
+          color: '#FF6384', // Default is #000000
+          fontStyle: 'Arial', // Default is Arial
+          sidePadding: 20, // Default is 20 (as a percentage)
+          minFontSize: 20, // Default is 20 (in px), set to false and text will not wrap.
+          lineHeight: 25 // Default is 25 (in px), used for when text wraps
+        }
+      }
+    }
   });
-
   
