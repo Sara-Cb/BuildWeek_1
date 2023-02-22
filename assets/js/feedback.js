@@ -15,7 +15,7 @@ stars.forEach(star => {
             }
         });
     });
-
+    
     star.addEventListener('mouseover', () => {
         const value = star.getAttribute('data-value');
 
