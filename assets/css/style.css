@@ -81,7 +81,49 @@ header .logo {
     background-color: red;
 }
 
+/*//////////////////////////////////////////*/
 /* CSS per timer */
+
+
+.timer { /*da eliminare*/
+  margin-top: 10px;
+}
+
+.timer > svg { /* Container del timer */
+  width: 200px;
+  height: 200px;
+}
+
+.timer > svg > circle {
+  fill: none;
+  stroke-opacity: 0.3;
+  stroke: #6b6b6b; /*Colore di sotto del border*/
+  stroke-width: 20;
+  transform-origin: center center;
+  transform: rotate(-90deg); 
+}
+
+.timer > svg > circle + circle {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  stroke-linecap: square; /*Bordo a punta quadrata*/
+  stroke-opacity: 1;
+  stroke: #00ffff; /*Colore del border*/
+}
+
+.timer > svg > circle + circle {
+  transition: stroke-dashoffset 0.3s ease;
+}
+
+.timer > svg > text {
+  font-size: 2rem;
+
+}
+
+.timer > svg > text + text {
+  font-size: 1rem;
+}
+
 .base-timer {
     position: relative;
     width: 300px;
@@ -173,3 +215,4 @@ ul li {
 ul {
   margin: 0 30;
 }
+
