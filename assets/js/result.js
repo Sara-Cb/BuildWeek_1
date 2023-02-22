@@ -106,6 +106,9 @@ const myChart = new Chart(Grafico, {
 ctx.fillStyle = '#000';
 ctx.textAlign = 'center';
 ctx.textBaseline = 'middle';
+ctx.font = 'bold 24px sans-serif';
+ctx.fillStyle = '#ffffff'; // CON QUESTO SI COLORA DI BIANCO
+
 ctx.fillText(giudizio(), Grafico.width / 2, Grafico.height / 2);
     }
   }]
@@ -113,7 +116,7 @@ ctx.fillText(giudizio(), Grafico.width / 2, Grafico.height / 2);
 
 var giudizio = function() {
   if (correctA > 1 ) {
-    return "Hai superato l'esame!"
+    return "Congratulazioni! \n Hai superato l'esame!"
   } else {
     return "Non hai superato l'esame"
   }
