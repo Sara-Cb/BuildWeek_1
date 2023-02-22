@@ -7,6 +7,7 @@ body {
   margin: 0 auto;
   padding: 0;
   border: 0;
+  width: 100vw;
   height: 100vh;
   background-image: url(../img/bg.jpg);
   background-repeat: no-repeat;
@@ -20,7 +21,8 @@ header {
 }
 
 header .logo {
-  width: 12%;
+  width: 20%;
+  margin: 20px;
 }
 
 .container {
@@ -71,14 +73,6 @@ header .logo {
 
 .stars img.hover {
   filter: brightness(1.5);
-}
-
-#answers button {
-  background-color: aquamarine;
-}
-
-#answers button.selected {
-  background-color: red;
 }
 
 /*//////////////////////////////////////////*/
@@ -184,7 +178,7 @@ header .logo {
 
 /* css per welcome page*/
 
-#button form {
+#procedi form {
   width: 85%;
   margin: 0 auto;
   padding: 50px;
@@ -196,15 +190,16 @@ header .logo {
 }
 
 
-#but {
+.but {
   background-color: #00ffff;
   width: 200px;
   height: 60px;
   font-family: 'Inter', sans-serif;
   border: none;
+  cursor: pointer;
 }
 
-#but:hover {
+.but:hover {
   box-shadow: 0px 0px 40px 5px #00ffff;
 }
 
@@ -220,3 +215,34 @@ ul li {
 ul {
   margin: 0 30;
 }
+
+/*feedback*/
+
+#containerFeedback {
+  text-align: center;
+}
+
+
+.commento {
+  width: 100%;
+  border: none;
+  border-bottom: 2px solid #D20094;
+  background-color: transparent;
+  margin-top: 20px;
+  color: white;
+  outline: none;
+}
+
+#infoBtn {
+  margin-top: 50px;
+}
+
+.para {
+  margin-top: 0;
+  font-size: 1.3em;
+}
+
+.lasciaFeedback {
+  margin-top: 80px;
+}
+/*
