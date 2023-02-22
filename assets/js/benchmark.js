@@ -145,6 +145,7 @@ const questions = [
   },
 ];
 
+
 const questionTitle = document.getElementById("question"); // Titolo domanda
 const questionAnswer = document.getElementById("answers"); // Risposta
 const nxtBtn = document.getElementById("nxtBtn"); // Bottone prossima domanda
@@ -152,6 +153,9 @@ const questionNumber = document.getElementById("question-number"); // Numero dom
 const questionTotal = document.getElementById("total-questions"); // Numero domande totali
 const timer = document.getElementById('timeLeft');
 const timerCircle = document.querySelector('svg > circle + circle');
+const answerBtns = document.querySelectorAll('input[name="answers"]');
+const res = [];
+var allAnswers = [];
 
 let currentQuestion = 0; 
 let score = 0;
@@ -160,9 +164,8 @@ let timerInterval = null;
 
 
 //estrazione domande
-const chooseRandom = (questions) => {
-  const res = [];
-  for (let i = 0; i < 10; ) {
+const chooseRandom = () => {
+  for (let i = 0; i < 10;) {
     const random = Math.floor(Math.random() * questions.length);
     if (!res.includes(questions[random])) {
       res.push(questions[random]);
@@ -171,15 +174,12 @@ const chooseRandom = (questions) => {
   }
   return res;
 };
-
-const res = chooseRandom(questions);
-const currentQ = res[currentQuestion]; // Ottieni la domanda corrente dall'array questions
-questionTitle.innerText = currentQ.question; // Mostra il testo della domanda corrente
-const allAnswers = currentQ.incorrect_answers.concat(currentQ.correct_answer); //array delle risposte alla domanda attuale
-
-function showQuestion() { // Resetta le risposte precedenti
+function showQuestion() { 
   questionAnswer.innerHTML = ""; 
-
+  currentQ = res[currentQuestion]; // Ottieni la domanda corrente dall'array questions
+  questionTitle.innerText = currentQ.question; // Mostra il testo della domanda corrente
+  allAnswers = currentQ.incorrect_answers.concat(currentQ.correct_answer); //array delle risposte alla domanda attuale
+  allAnswers.sort(() => Math.random() - 0.5);
   // Creo un input per ogni risposta e aggiungo alla pagina
   allAnswers.forEach((answer) => {
     const answerBtn = document.createElement("input");
@@ -196,56 +196,30 @@ function showQuestion() { // Resetta le risposte precedenti
     answerText.appendChild(answerBtn);
   });
   questionNumber.innerText = currentQuestion + 1;
-  timeLeft = 30; // reset del timer ad ogni nuova domanda
-  runTimer(); // avvia il timer per la nuova domanda
+  setNextBtnText();
+  clearInterval(timerInterval); // elimina il timer precedente
+  runTimer()// avvia il timer per la nuova domanda
 }
 
-// Funzione per mostrare la prossima domanda
-function showNextQuestion() {
-  const answerBtns = document.querySelectorAll('input[name="answers"]');
-  var selectedAnswer = null;
+//da correggere, non capisco perchè qui sotto non prende il valore
+
+const next = function(){
   answerBtns.forEach((btn) => {
     if (btn.checked) {
-      selectedAnswer = btn;
+      score += btn.value;
     }
   });
-  if (selectedAnswer) {
-    score += Number(selectedAnswer.value);
-  }
   currentQuestion++;
   if (currentQuestion >= res.length) {
     localStorage.setItem("score", score);
     window.location.href = "../../result.html";
   } else {
-    const currentQ = res[currentQuestion]; // Genera una nuova domanda casuale
-    questionTitle.innerText = currentQ.question;
-    const allAnswers = currentQ.incorrect_answers.concat(currentQ.correct_answer);
-    allAnswers.sort(() => Math.random() - 0.5);
-    questionAnswer.innerHTML = "";
-    allAnswers.forEach((answer) => {
-      const answerBtn = document.createElement("input");
-      answerBtn.type = "radio";
-      answerBtn.name = "answers";
-      if (answer === currentQ.correct_answer) {
-        answerBtn.value = 1;
-      } else {
-        answerBtn.value = 0;
-      }
-      const answerText = document.createElement("label");
-      answerText.innerHTML = answer;
-      questionAnswer.appendChild(answerText);
-      answerText.appendChild(answerBtn);
-    });
-    questionNumber.innerText = currentQuestion + 1;
-    setNextBtnText();
-    stopTimer(); // elimina il timer precedente
-    runTimer()
     console.log(score);
-  }
-}
+    showQuestion();
+}};
 
 // Aggiungi l'evento "click" al pulsante "nxtBtn"
-nxtBtn.addEventListener("click", showNextQuestion);
+nxtBtn.addEventListener("click", next);
 
 //cambio testo del button durante l'ultima domanda
 function setNextBtnText() {
@@ -259,24 +233,24 @@ function setNextBtnText() {
 }
 
 window.addEventListener("load", function () {
-  setNextBtnText();
+  chooseRandom()
   showQuestion();
+  setNextBtnText();
 });
 
 /*//////////////////////////////////////////*/
 // JS per timer
-
-function isTimeLeft() {
-  return timeLeft > -1;
-}
 
 // Funzione per eseguire il timre
 function runTimer() {
 	timerCircle.classList.add('animatable');
 	timerCircle.style.strokeDashoffset = 1;
 
+  timeLeft = 30;
+  timerInterval = null;
+
   timerInterval = setInterval ( function(){
-		if(isTimeLeft()){
+		if(timeLeft > -1){
       let timeRemaining = 0;
 			timeRemaining = timeLeft-- ;
 			const normalizedTime = (timeRemaining - 30 ) / 30;
@@ -285,16 +259,9 @@ function runTimer() {
       timer.innerHTML = timeRemaining;
 		} else {
         // Passa automaticamente alla prossima domanda quando il timer raggiunge lo 0
-        showNextQuestion();
+        next();
       }
 
     }
-  , 1000)
+  , 1000) 
   ;}
-
-  
-function stopTimer() {
-  timerInterval = null;
-  timeLeft = 30; // reset del timer ad ogni nuova domanda
-  clearInterval(timerInterval);
-}
