@@ -172,6 +172,8 @@ const chooseRandom = () => {
   }
   return res;
 };
+
+//composizione + far comparire domanda
 function showQuestion() {
   questionAnswer.innerHTML = "";
   answerBtns = [];
@@ -206,6 +208,7 @@ function showQuestion() {
 
 //da correggere, non capisco perchè qui sotto non prende il valore
 
+
 const next = function () {
   const selectedAnswer = answerBtns.find((btn) => btn.checked);
   if (selectedAnswer && parseInt(selectedAnswer.value) === 1) {
@@ -216,13 +219,19 @@ const next = function () {
     localStorage.setItem("score", score);
     window.location.href = "../../result.html";
   } else {
-    console.log(score);
     showQuestion();
   }
 };
 
 // Aggiungi l'evento "click" al pulsante "nxtBtn"
-nxtBtn.addEventListener("click", next);
+nxtBtn.addEventListener("click", function(){
+  const selectedAnswer = answerBtns.find((btn) => btn.checked);
+  if (selectedAnswer){
+    next();
+  } else {
+    return;
+  }
+});
 
 //cambio testo del button durante l'ultima domanda
 function setNextBtnText() {

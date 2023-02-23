@@ -20,65 +20,48 @@ percentualeSbagliate.textContent = `${wrongPercentage}`;
 domandeSbagliate.textContent = `${wrongA}/10 `;
 
 const Grafico = document.getElementById('grafico');
-var ctx = Grafico.getContext('2d');
+const esito = document.getElementById('esito');
 
 const options = {
   responsive: true,
   maintainAspectRatio: false,
-  width: 800,
+  width: 250,
+  outerWidth: 300,
+  outerHeight: 250,
   plugins: {
     legend: {
       display: false,
     }
   },
   cutout: '70%',
-  centerText: {
-    display: true,
-    text: 'My label',
-    font: '14px Arial',
-    color: '#666666',
-    sidePadding: 40
-  }
 };
 
 
 const chartData = {
-  labels: ['Correct', 'Wrong'],
+  labels: ['Wrong', 'Correct'],
   datasets: [
     {
-      label: 'Your result',
       borderWidth: 1,
-      data: [correctA, wrongA],
-      backgroundColor: ['#00ffff', '#d20094'],
-      borderColor: ['#00ffff', '#d20094'],
-      hoverOffset: 10
+      data: [wrongA, correctA],
+      backgroundColor: ['#d20094','#00ffff'],
+      borderColor: ['#d20094', '#00ffff'],
+      hoverOffset: -3,
     }
   ]
 };
-
 
 const myChart = new Chart(Grafico, {
   type: 'doughnut',
   data: chartData,
   options: options,
-  plugins: [{
-    afterDraw: function(chart) {
-      ctx.font = '14px Arial';
-ctx.fillStyle = '#000';
-ctx.textAlign = 'center';
-ctx.textBaseline = 'middle';
-ctx.font = 'bold 24px sans-serif';
-ctx.fillStyle = '#ffffff'; // CON QUESTO SI COLORA DI BIANCO
-
-ctx.fillText(giudizio(), Grafico.width / 2, Grafico.height / 2);
-    }
-  }]
 });
 
 var giudizio = function() {
   if (correctA > 5 ) {
-    return "Congratulazioni! \n Hai superato l'esame!"
+    return "<span id='congrats'>Congrats!</span> <br> You passed the exam!"
   } else {
-    return "Non hai superato l'esame"
+    return "<span id='ohNo'>Sorry!</span><br> It will be better next time!"
   }
 }
+
+esito.innerHTML = giudizio();
