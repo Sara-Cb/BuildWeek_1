@@ -18,46 +18,7 @@ const percentualeSbagliate = document.getElementById('percentualeSbagliate');
 const domandeSbagliate = document.getElementById('domandeSbagliate');
 percentualeSbagliate.textContent = `${wrongPercentage}`;
 domandeSbagliate.textContent = `${wrongA}/10 `;
-/*
-const Grafico = document.getElementById('grafico');
-const risultato1 = document.getElementById('risultato');
 
-function result() {
-    if (correctPercentage>wrongPercentage) {
-       risultato1.innerHTML = "Hai superato l'esame"
-    } else {
-        risultato1.innerHTML = "Non hai superato l'esame"
-    } 
-  }
-
-  result();
-*/
-/*
-new Chart(Grafico, {
-  type: 'doughnut',
-  centerText: {
-    display: true,
-    text: 'My label',
-    font: 'Arial',
-    color: '#666666',
-
-  },
-  data: {
-    labels: ['Correct', 'Wrong'],
-    datasets: [{
-      label: 'Your result',
-      borderWidth: 1,
-      cutout: 100,
-      data: [correctA, wrongA],
-      backgroundColor: [
-        '#00ffff',
-        '#d20094',
-      ],
-      hoverOffset: 4
-    }]
-  },
-});
-*/
 const Grafico = document.getElementById('grafico');
 var ctx = Grafico.getContext('2d');
 
@@ -115,7 +76,7 @@ ctx.fillText(giudizio(), Grafico.width / 2, Grafico.height / 2);
 });
 
 var giudizio = function() {
-  if (correctA > 1 ) {
+  if (correctA > 5 ) {
     return "Congratulazioni! \n Hai superato l'esame!"
   } else {
     return "Non hai superato l'esame"
