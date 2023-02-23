@@ -18,34 +18,38 @@
     <div class="container" id="containerResult">
 
         <div class="titolo">
-            <h2>Results</h2>
-            <h4>the summary of your answers:</h4>
+            <h1>Results</h1>
+            <h4>The summary of your answers:</h4>
         </div>
 
         <div id="risultato">
 
             <div id="corrette">
                 <h2>Correct</h2>
-                <p><span id="percentualeGiuste"></span>%</p>
-                <p><span id="domandeCorrette"></span>questions</p>
+                <p class="perc"><span id="percentualeGiuste"></span>%</p>
+                <p class="nDom"><span id="domandeCorrette"></span>questions</p>
             </div>
 
-            <div>
-                <canvas id="grafico">
-                    <p id="risultato"></p>
-                </canvas>
+            <div id="centro">
+                <div>
+                    <canvas id="grafico"></canvas>
+                </div>
+
+                <div id="centriamolo">
+                    <p id="esito"></p>
+                </div>
             </div>
 
             <div id="sbagliate">
                 <h2>Wrong</h2>
-                <p><span id="percentualeSbagliate"></span>%</p>
-                <p><span id="domandeSbagliate"></span>questions</p>
+                <p class="perc"><span id="percentualeSbagliate"></span>%</p>
+                <p class="nDom"><span id="domandeSbagliate"></span>questions</p>
             </div>
 
         </div>
 
-        <div id="btnFeedback">
-            <a href="feedback.html">Rate us</a>
+        <div>
+            <button class="but" id="btnFeedback"><a href="feedback.html">RATE US</a></button>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>

@@ -172,6 +172,8 @@ const chooseRandom = () => {
   }
   return res;
 };
+
+//composizione + far comparire domanda
 function showQuestion() {
   questionAnswer.innerHTML = "";
   answerBtns = [];
@@ -184,6 +186,7 @@ function showQuestion() {
     const answerBtn = document.createElement("input");
     answerBtn.type = "radio";
     answerBtn.name = "answers";
+    answerBtn.id = answer;
     if (answer === currentQ.correct_answer) {
       answerBtn.value = 1;
     } else {
@@ -191,18 +194,20 @@ function showQuestion() {
     }
     const answerText = document.createElement("label");
     answerText.classList.add('risposte');
+    answerText.htmlFor = answerBtn.id;
     answerText.innerHTML = answer;
+    questionAnswer.appendChild(answerBtn);
     questionAnswer.appendChild(answerText);
-    answerText.appendChild(answerBtn);
     answerBtns.push(answerBtn);
   });
   questionNumber.innerText = currentQuestion + 1;
   setNextBtnText();
-  //clearInterval(timerInterval); // elimina il timer precedente
-  //runTimer(); // avvia il timer per la nuova domanda
+  clearInterval(timerInterval); // elimina il timer precedente
+  runTimer(); // avvia il timer per la nuova domanda
 }
 
 //da correggere, non capisco perchè qui sotto non prende il valore
+
 
 const next = function () {
   const selectedAnswer = answerBtns.find((btn) => btn.checked);
@@ -214,13 +219,19 @@ const next = function () {
     localStorage.setItem("score", score);
     window.location.href = "../../result.html";
   } else {
-    console.log(score);
     showQuestion();
   }
 };
 
 // Aggiungi l'evento "click" al pulsante "nxtBtn"
-nxtBtn.addEventListener("click", next);
+nxtBtn.addEventListener("click", function(){
+  const selectedAnswer = answerBtns.find((btn) => btn.checked);
+  if (selectedAnswer){
+    next();
+  } else {
+    return;
+  }
+});
 
 //cambio testo del button durante l'ultima domanda
 function setNextBtnText() {
@@ -239,11 +250,8 @@ window.addEventListener("load", function () {
   setNextBtnText();
 });
 
-/*//////////////////////////////////////////*/
-// JS per timer
-
-//* Funzione per eseguire il timre
-/*function runTimer() {
+//* Funzione per eseguire il timer
+function runTimer() {
   timerCircle.classList.add("animatable");
   timerCircle.style.strokeDashoffset = 1;
 
@@ -263,4 +271,4 @@ window.addEventListener("load", function () {
       next();
     }
   }, 1000);
-}*/
+}
