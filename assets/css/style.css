@@ -21,8 +21,8 @@ header {
 }
 
 header .logo {
-  width: 20%;
-  margin: 20px;
+  height: 30px;
+  margin-top: 20px;
 }
 
 .container {
@@ -78,16 +78,20 @@ header .logo {
 /*//////////////////////////////////////////*/
 /* CSS per timer */
 
+#containerBenchmark {
+  text-align: center;
+}
 
-.timer {
-  /*da eliminare*/
-  margin-top: 10px;
+#headerBenchmark {
+  display: flex;
+  justify-content: space-between;
 }
 
 .timer>svg {
   /* Container del timer */
-  width: 200px;
-  height: 200px;
+  width: 220px;
+  height: 220px;
+  margin-top: 15px;
 }
 
 .timer>svg>circle {
@@ -114,68 +118,64 @@ header .logo {
   transition: stroke-dashoffset 0.3s ease;
 }
 
-.timer>svg>text {
-  font-size: 2rem;
+text {
+  font-size: 0.6rem;
+  fill: white;
+  font-family: 'Outfit', sans-serif;
 }
 
-.timer>svg>text+text {
-  font-size: 1rem;
+#timeLeft {
+  font-size: 50px;
+  font-weight: 400;
+  font-family: 'Outfit', sans-serif;
 }
 
-.base-timer {
-  position: relative;
-  width: 300px;
-  height: 300px;
+#para {
+  font-family: 'Outfit', sans-serif;
+  text-align: center;
 }
 
-.base-timer__svg {
-  transform: scaleX(-1);
+#numberQ {
+  letter-spacing: 0.15rem;
 }
 
-.base-timer__circle {
-  fill: none;
-  stroke: none;
+#barraDomanda {
+  color: #D20094;
 }
 
-.base-timer__path-elapsed {
-  stroke-width: 7px;
-  stroke: grey;
+#nxtBtn {
+  align-self: center;
 }
 
-.base-timer__path-remaining {      
-  stroke-width: 7px;
-  stroke-linecap: round;
-  transform: rotate(90deg);
-  transform-origin: center;
-  transition: 1s linear all;
-  fill-rule: nonzero;
-  stroke: currentColor;
-}
-
-.base-timer__path-remaining.green {   
-  color: rgb(65, 184, 131);
-}
-
-.base-timer__path-remaining.orange {  
-  color: orange;
-}
-
-.base-timer__path-remaining.red {      
-  color: red;
-}
-
-.base-timer__label {     
-  position: absolute;
-  width: 300px;
-  height: 300px;
-  top: 0;
+#containerBenchmark fieldset {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 48px;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  border: none;
+  margin-bottom: 30px;
+} 
+
+.risposte {
+  margin: 10px 0px;
+  padding: 20px;
+  border-radius: 30px;
+  cursor: pointer;
+  border: 4px solid white;
+  flex-basis: 40%;
 }
 
+.risposte:hover {
+  background-color: #D20094;
+}
 
+#containerBenchmark input{
+  opacity: 0.01;
+  z-index: 100;
+}
+
+#containerBenchmark input:checked+label {
+  background: yellow;
+}
 
 /* css per welcome page*/
 
