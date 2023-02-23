@@ -145,27 +145,25 @@ const questions = [
   },
 ];
 
-
 const questionTitle = document.getElementById("question"); // Titolo domanda
 const questionAnswer = document.getElementById("answers"); // Risposta
 const nxtBtn = document.getElementById("nxtBtn"); // Bottone prossima domanda
 const questionNumber = document.getElementById("question-number"); // Numero domanda attuale
 const questionTotal = document.getElementById("total-questions"); // Numero domande totali
-const timer = document.getElementById('timeLeft');
-const timerCircle = document.querySelector('svg > circle + circle');
-const answerBtns = document.querySelectorAll('input[name="answers"]');
+const timer = document.getElementById("timeLeft");
+const timerCircle = document.querySelector("svg > circle + circle");
+var answerBtns = [];
 const res = [];
 var allAnswers = [];
 
-let currentQuestion = 0; 
+let currentQuestion = 0;
 let score = 0;
 let timeLeft = 30;
 let timerInterval = null;
 
-
 //estrazione domande
 const chooseRandom = () => {
-  for (let i = 0; i < 10;) {
+  for (let i = 0; i < 10; ) {
     const random = Math.floor(Math.random() * questions.length);
     if (!res.includes(questions[random])) {
       res.push(questions[random]);
@@ -174,8 +172,9 @@ const chooseRandom = () => {
   }
   return res;
 };
-function showQuestion() { 
-  questionAnswer.innerHTML = ""; 
+function showQuestion() {
+  questionAnswer.innerHTML = "";
+  answerBtns = [];
   currentQ = res[currentQuestion]; // Ottieni la domanda corrente dall'array questions
   questionTitle.innerText = currentQ.question; // Mostra il testo della domanda corrente
   allAnswers = currentQ.incorrect_answers.concat(currentQ.correct_answer); //array delle risposte alla domanda attuale
@@ -194,21 +193,21 @@ function showQuestion() {
     answerText.innerHTML = answer;
     questionAnswer.appendChild(answerText);
     answerText.appendChild(answerBtn);
+    answerBtns.push(answerBtn);
   });
   questionNumber.innerText = currentQuestion + 1;
   setNextBtnText();
   clearInterval(timerInterval); // elimina il timer precedente
-  runTimer()// avvia il timer per la nuova domanda
+  runTimer(); // avvia il timer per la nuova domanda
 }
 
 //da correggere, non capisco perchè qui sotto non prende il valore
 
-const next = function(){
-  answerBtns.forEach((btn) => {
-    if (btn.checked) {
-      score += btn.value;
-    }
-  });
+const next = function () {
+  const selectedAnswer = answerBtns.find((btn) => btn.checked);
+  if (selectedAnswer && parseInt(selectedAnswer.value) === 1) {
+    score++;
+  }
   currentQuestion++;
   if (currentQuestion >= res.length) {
     localStorage.setItem("score", score);
@@ -216,7 +215,8 @@ const next = function(){
   } else {
     console.log(score);
     showQuestion();
-}};
+  }
+};
 
 // Aggiungi l'evento "click" al pulsante "nxtBtn"
 nxtBtn.addEventListener("click", next);
@@ -233,7 +233,7 @@ function setNextBtnText() {
 }
 
 window.addEventListener("load", function () {
-  chooseRandom()
+  chooseRandom();
   showQuestion();
   setNextBtnText();
 });
@@ -241,27 +241,25 @@ window.addEventListener("load", function () {
 /*//////////////////////////////////////////*/
 // JS per timer
 
-// Funzione per eseguire il timre
+//* Funzione per eseguire il timre
 function runTimer() {
-	timerCircle.classList.add('animatable');
-	timerCircle.style.strokeDashoffset = 1;
+  timerCircle.classList.add("animatable");
+  timerCircle.style.strokeDashoffset = 1;
 
   timeLeft = 30;
   timerInterval = null;
 
-  timerInterval = setInterval ( function(){
-		if(timeLeft > -1){
+  timerInterval = setInterval(function () {
+    if (timeLeft > -1) {
       let timeRemaining = 0;
-			timeRemaining = timeLeft-- ;
-			const normalizedTime = (timeRemaining - 30 ) / 30;
-   // const normalizedTime = (30 - timeRemaining) / 30; ---> Senso antiorario
-			timerCircle.style.strokeDashoffset = normalizedTime;
+      timeRemaining = timeLeft--;
+      const normalizedTime = (timeRemaining - 30) / 30;
+      // const normalizedTime = (30 - timeRemaining) / 30; ---> Senso antiorario
+      timerCircle.style.strokeDashoffset = normalizedTime;
       timer.innerHTML = timeRemaining;
-		} else {
-        // Passa automaticamente alla prossima domanda quando il timer raggiunge lo 0
-        next();
-      }
-
+    } else {
+      // Passa automaticamente alla prossima domanda quando il timer raggiunge lo 0
+      next();
     }
-  , 1000) 
-  ;}
+  }, 1000);
+}
