@@ -190,6 +190,7 @@ function showQuestion() {
       answerBtn.value = 0;
     }
     const answerText = document.createElement("label");
+    answerText.classList.add('risposte');
     answerText.innerHTML = answer;
     questionAnswer.appendChild(answerText);
     answerText.appendChild(answerBtn);
@@ -197,8 +198,8 @@ function showQuestion() {
   });
   questionNumber.innerText = currentQuestion + 1;
   setNextBtnText();
-  clearInterval(timerInterval); // elimina il timer precedente
-  runTimer(); // avvia il timer per la nuova domanda
+  //clearInterval(timerInterval); // elimina il timer precedente
+  //runTimer(); // avvia il timer per la nuova domanda
 }
 
 //da correggere, non capisco perchè qui sotto non prende il valore
@@ -242,7 +243,7 @@ window.addEventListener("load", function () {
 // JS per timer
 
 //* Funzione per eseguire il timre
-function runTimer() {
+/*function runTimer() {
   timerCircle.classList.add("animatable");
   timerCircle.style.strokeDashoffset = 1;
 
@@ -262,4 +263,4 @@ function runTimer() {
       next();
     }
   }, 1000);
-}
+}*/
