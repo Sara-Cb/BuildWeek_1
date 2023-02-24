@@ -3,12 +3,14 @@
 
 html,
 body {
-  display: block;
-  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
   padding: 0;
   border: 0;
-  width: 100vw;
-  height: 100vh;
+  height: 100%;
+  max-width: 100vw;
+  max-height: 100vh;
   background-image: url(../img/bg.jpg);
   background-repeat: no-repeat;
   background-size: cover;
@@ -18,6 +20,7 @@ body {
 
 header {
   width: 85%;
+  height: auto;
   margin: 20px auto;
 }
 
@@ -26,12 +29,23 @@ header .logo {
   margin-top: 20px;
 }
 
-.container {
+
+main {
+  flex: 1; 
   display: flex;
-  width: 85%;
-  margin: 0 auto;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
+  margin-bottom: 8%;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 85%;
+  height: 100%;
+  margin: 0 auto;
   font-family: 'Inter', 'Outfit', sans-serif;
 }
 
@@ -68,9 +82,15 @@ header .logo {
   width: 200px;
   height: 60px;
   font-family: 'Inter', sans-serif;
+  text-align: center;
   font-weight: 600;
   border: none;
   cursor: pointer;
+}
+
+a.but {
+text-decoration: none;
+color: white;
 }
 
 .but:hover {
@@ -79,17 +99,12 @@ header .logo {
 
 /*//////////////////////////////////////////
 css per welcome page*/
+#containerWelcome {
+align-self: center;
+}
 
-#procedi form {
-  width: 85%;
-  margin: 0 auto;
-  padding: 50px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  position: absolute;
-  left: 0px;
-  align-items: center;
+#inizio {
+  width: 50%;
 }
 
 #inizio h3 {
@@ -104,6 +119,23 @@ ul {
   margin-left: 0;
 }
 
+#procedi {
+  width: 100%;
+  height: max-content;
+  margin: 0 auto;
+  padding: 0;
+  margin-top: 40px;
+}
+
+#procedi form {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 #checkbox {
   display: flex;
   align-items: center;
@@ -111,6 +143,7 @@ ul {
 
 #promise {
   visibility: hidden;
+  position: absolute;
 }
 
 #promise + label:before {
@@ -129,8 +162,8 @@ ul {
   content: '✔';
 }
 
-#inizio {
-  width: 50%;
+#promise:checked + label {
+  text-decoration: underline;
 }
 
 /*//////////////////////////////////////////
@@ -144,6 +177,7 @@ CSS per benchmark */
 #headerBenchmark {
   display: flex;
   justify-content: space-between;
+  margin-bottom: 0px;
 }
 
 #containerBenchmark h2 {
@@ -279,7 +313,7 @@ CSS per result */
 
 #risultato {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   margin-bottom: 50px;
   width: 90%;
 }
@@ -303,21 +337,23 @@ CSS per result */
 
 #corrette, #sbagliate {
   margin: 30px;
-  width: 25%;
+  width: 20%;
 }
 
 #sbagliate {
   text-align: right;
 }
+
 #btnFeedback {
   border: 2px solid #ffffff;
   background: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-#btnFeedback a {
-  text-decoration: none;
-  font-weight: 700;
-  color: white;
+#btnFeedback:hover {
+  box-shadow: 0px 0px 40px 5px #ffffff;
 }
 
 .perc {
@@ -344,6 +380,7 @@ CSS per feedback */
 
 #containerFeedback {
   text-align: center;
+  width: 60%;
 }
 
 
