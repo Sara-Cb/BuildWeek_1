@@ -12,46 +12,49 @@
 
 <body>
     <header>
-        <img src="assets/img/epicode_logo.png" alt="logo pagina" class="logo">
+        <a href="welcome.html"> <img src="assets/img/epicode_logo.png" alt="logo epicode" class="logo"></a>
     </header>
+    
+    <main>
+        <div class="container" id="containerResult">
 
-    <div class="container" id="containerResult">
-
-        <div class="titolo">
-            <h1>Results</h1>
-            <h4>The summary of your answers:</h4>
-        </div>
-
-        <div id="risultato">
-
-            <div id="corrette">
-                <h2>Correct</h2>
-                <p class="perc"><span id="percentualeGiuste"></span>%</p>
-                <p class="nDom"><span id="domandeCorrette"></span>questions</p>
+            <div class="titolo">
+                <h1>Results</h1>
+                <h4>The summary of your answers:</h4>
             </div>
 
-            <div id="centro">
-                <div>
-                    <canvas id="grafico"></canvas>
+            <div id="risultato">
+
+                <div id="corrette">
+                    <h2>Correct</h2>
+                    <p class="perc"><span id="percentualeGiuste"></span>%</p>
+                    <p class="nDom"><span id="domandeCorrette"></span>questions</p>
                 </div>
 
-                <div id="centriamolo">
-                    <p id="esito"></p>
+                <div id="centro">
+                    <div>
+                        <canvas id="grafico"></canvas>
+                    </div>
+
+                    <div id="centriamolo">
+                        <p id="esito"></p>
+                    </div>
                 </div>
+
+                <div id="sbagliate">
+                    <h2>Wrong</h2>
+                    <p class="perc"><span id="percentualeSbagliate"></span>%</p>
+                    <p class="nDom"><span id="domandeSbagliate"></span>questions</p>
+                </div>
+
             </div>
 
-            <div id="sbagliate">
-                <h2>Wrong</h2>
-                <p class="perc"><span id="percentualeSbagliate"></span>%</p>
-                <p class="nDom"><span id="domandeSbagliate"></span>questions</p>
+
+            <div>
+                <a class="but" id="btnFeedback" href="feedback.html">RATE US</a>
             </div>
-
         </div>
-
-        <div>
-            <button class="but" id="btnFeedback"><a href="feedback.html">RATE US</a></button>
-        </div>
-    </div>
+    </main>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="assets/js/result.js"></script>
 </body>
