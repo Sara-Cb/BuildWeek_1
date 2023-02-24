@@ -236,11 +236,11 @@ nxtBtn.addEventListener("click", function(){
 //cambio testo del button durante l'ultima domanda
 function setNextBtnText() {
   if (currentQuestion === res.length - 1) {
-    nxtBtn.value = "Show Results";
-    nxtBtn.innerText = "Show Results";
+    nxtBtn.value = "SHOW RESULTS";
+    nxtBtn.innerText = "SHOW RESULTS";
   } else {
-    nxtBtn.value = "Next Question";
-    nxtBtn.innerText = "Next Question";
+    nxtBtn.value = "NEXT QUESTION";
+    nxtBtn.innerText = "NEXT QUESTION";
   }
 }
 
