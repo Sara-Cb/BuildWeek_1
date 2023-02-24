@@ -47,7 +47,6 @@ main {
   height: 100%;
   margin: 0 auto;
   font-family: 'Inter', 'Outfit', sans-serif;
-
 }
 
 .container h1,
@@ -118,6 +117,7 @@ ul li {
 
 ul {
   margin-left: 0;
+  padding-left: 15px;
 }
 
 #procedi {
@@ -382,7 +382,6 @@ CSS per result */
   font-size: 12px;
   display: block;
   padding-top: 15px;
-
 }
 
 
@@ -394,7 +393,6 @@ CSS per feedback */
   text-align: center;
   width: 60%;
 }
-
 
 .commento {
   width: 100%;
