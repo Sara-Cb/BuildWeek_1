@@ -173,6 +173,7 @@ CSS per benchmark */
 
 #containerBenchmark {
   text-align: center;
+  align-items: center;
   margin-top: -20px;
 }
 
@@ -182,10 +183,8 @@ CSS per benchmark */
   margin-bottom: 0px;
 }
 
-#containerBenchmark h2 {
+#question {
   font-size: 40px;
-  width: 70%;
-  align-self: center;
 }
 
 .timer>svg {
@@ -233,7 +232,7 @@ text {
   margin: 0;
 }
 
-#para {
+#tipoFooter {
   font-family: 'Outfit', sans-serif;
   text-align: center;
 }
@@ -244,6 +243,7 @@ text {
 
 #nxtBtn {
   align-self: center;
+  display: block;
 }
 
 #containerBenchmark fieldset {

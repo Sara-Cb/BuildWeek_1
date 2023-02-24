@@ -176,6 +176,7 @@ const chooseRandom = () => {
 //composizione + far comparire domanda
 function showQuestion() {
   questionAnswer.innerHTML = "";
+  nxtBtn.setAttribute('disabled', 'true');
   answerBtns = [];
   currentQ = res[currentQuestion]; // Ottieni la domanda corrente dall'array questions
   questionTitle.innerText = currentQ.question; // Mostra il testo della domanda corrente
@@ -201,13 +202,16 @@ function showQuestion() {
     answerBtns.push(answerBtn);
   });
   questionNumber.innerText = currentQuestion + 1;
+  answerBtns.forEach((btn) => {
+    btn.addEventListener("change", () => {
+      nxtBtn.removeAttribute('disabled');
+      nxtBtn.addEventListener("click", next);
+    });
+  });
   setNextBtnText();
   clearInterval(timerInterval); // elimina il timer precedente
   runTimer(); // avvia il timer per la nuova domanda
 }
-
-//da correggere, non capisco perchè qui sotto non prende il valore
-
 
 const next = function () {
   const selectedAnswer = answerBtns.find((btn) => btn.checked);
@@ -222,16 +226,6 @@ const next = function () {
     showQuestion();
   }
 };
-
-// Aggiungi l'evento "click" al pulsante "nxtBtn"
-nxtBtn.addEventListener("click", function(){
-  const selectedAnswer = answerBtns.find((btn) => btn.checked);
-  if (selectedAnswer){
-    next();
-  } else {
-    return;
-  }
-});
 
 //cambio testo del button durante l'ultima domanda
 function setNextBtnText() {
