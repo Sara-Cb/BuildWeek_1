@@ -329,6 +329,8 @@ CSS per result */
 #centriamolo {
   position: absolute;
   text-align: center;
+  width: 180px;
+  height: auto;
 }
 
 #grafico {
@@ -367,11 +369,20 @@ CSS per result */
 #ohNo {
   color: #D20094;
   font-size: 24px;
+  font-weight: bolder;
 }
 
 #congrats {
   color: #00ffff;
-  font-size: 24px;
+  font-size: 18px;
+  font-weight: bolder;
+}
+
+.little {
+  font-size: 12px;
+  display: block;
+  padding-top: 15px;
+
 }
 
 
